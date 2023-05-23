@@ -1,0 +1,45 @@
+Webcam Pulse Detector:
+
+How to start:
+--------------
+Just run the unzipped application directly.
+
+Instructions:
+----------
+- When run, a window will open showing a stream from your computer's webcam. To switch to another connected camera, press “C”.
+
+- When a forehead location has been correctly detected and isolated, the user should press "S" on their
+keyboard to lock this location, and remain as still as possible (the camera
+stream window must have focus for the click to register). This freezes the acquisition location in place. This lock can
+be released by pressing "S" again.
+
+- To view a stream of the measured data as it is gathered, press "D". To hide this display, press "D" again.
+
+- The data display shows three data traces, from top to bottom:
+   1. (top) raw optical intensity
+   2. (bottom) Power spectral density, with local maxima indicating the heartrate (in beats per minute).
+
+- With consistent lighting and minimal head motion, a stable heartbeat should be
+isolated in about 15 seconds. A count-down is shown in the image frame.
+
+Setting up serial port or UDP data output:
+-------------------------------------------
+
+The bundled application can be run with command line arguments for specifying
+a serial port or UDP server to output the estimated heart rate, in real time.
+
+For serial port output, the port and baud rate are set separately.
+
+For UDP, the ip and port are set together, but delimited by a ":".
+
+Example usage (serial port, Windows):
+      get_pulse.exe --serial COM5 --baud 9600
+
+Example usage (serial port, Mac OSX):
+      open -n ./get_pulse.app --args -serial /dev/tty.usbmodemfa131
+
+Example usage (UDP, Windows):
+      get_pulse.exe --udp 192.168.1.100:5050
+
+Example usage (UDP, Mac OSX):
+      open -n ./get_pulse.app --args --udp 192.168.1.100:5050
